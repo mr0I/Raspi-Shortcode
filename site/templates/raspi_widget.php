@@ -8,15 +8,19 @@ extract(shortcode_atts(array(
     'post_type' => ''
 ), $atts));
 
-$args = [
-    'p' => $post_id,
-    'post_type' => $post_type,
-    'posts_per_page' => 1,
-    'offset' => 0,
-    'post_status' => 'publish'
-];
-$results = new WP_Query($args);
-$posts = $results->posts;
+
+$posts = [];
+if ($post_id !== '' && $post_type !== '') {
+    $args = [
+        'p' => $post_id,
+        'post_type' => $post_type,
+        'posts_per_page' => 1,
+        'offset' => 0,
+        'post_status' => 'publish'
+    ];
+    $results = new WP_Query($args);
+    $posts = $results->posts;
+}
 
 // [insert_raspi post_id="14" post_type="raspi"]
 
