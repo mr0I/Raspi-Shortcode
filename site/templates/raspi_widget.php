@@ -9,7 +9,7 @@ extract(shortcode_atts(array(
 ), $atts));
 
 
-$posts = [];
+$post = [];
 if ($post_id !== '' && $post_type !== '') {
     $args = [
         'p' => $post_id,
@@ -19,7 +19,7 @@ if ($post_id !== '' && $post_type !== '') {
         'post_status' => 'publish'
     ];
     $results = new WP_Query($args);
-    $posts = $results->posts;
+    $post = $results->posts;
 }
 
 // [insert_raspi post_id="14" post_type="raspi"]

@@ -9,10 +9,13 @@ $postTypes = get_post_types([
 // wp_die(json_encode($postTypes, JSON_PRETTY_PRINT));
 
 ?>
-<select onchange="changePostType(event)">
-    <?php foreach ($postTypes as $postType) : ?>
-        <?php if ($postType->capability_type === 'post') : ?>
-            <option value="<?= $postType->name; ?>"><?= $postType->label; ?></li>
-            <?php endif; ?>
-        <?php endforeach; ?>
-</select>
+<form action="" name="sp_shortcode">
+    <select onchange="changePostType(event)">
+        <?php foreach ($postTypes as $postType) : ?>
+            <?php if ($postType->capability_type === 'post') : ?>
+                <option value="<?= $postType->name; ?>"><?= $postType->label; ?></li>
+                <?php endif; ?>
+            <?php endforeach; ?>
+    </select>
+    <input type="hidden" id="sp_shortcode_nonce" value="<?= wp_create_nonce('sp-shortcode-nonce') ?>">
+</form>

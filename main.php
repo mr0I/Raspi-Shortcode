@@ -24,13 +24,13 @@ define('RSC_ADMIN_JS', plugin_dir_url(__FILE__) . 'admin/assets/js/');
 
 add_action('admin_enqueue_scripts', function () {
     wp_enqueue_script('rsc-admin-script', RSC_ADMIN_JS . 'admin_scripts.js', array('jquery'), '1.0.0');
-    // wp_localize_script('admin-script', 'RSC_ADMIN_Ajax', array(
-    //     'AJAXURL' => admin_url('admin-ajax.php'),
-    //     'SECURITY' => wp_create_nonce('OwpCojMcdGJ-k-o'),
-    //     'REQUEST_TIMEOUT' => 30000,
-    //     // 'SAVE_TEXT' => __('Save', 'intl_qa_lan'),
-    //     // 'SUCCESS_MESSAGE' => __('Successful Operation', 'intl_qa_lan')
-    // ));
+    wp_localize_script('rsc-admin-script', 'RSC_ADMIN_Ajax', array(
+        'AJAXURL' => admin_url('admin-ajax.php'),
+        'SECURITY' => wp_create_nonce('OwpCojMcdGJ-k-o'),
+        'REQUEST_TIMEOUT' => 30000,
+        // 'SAVE_TEXT' => __('Save', 'intl_qa_lan'),
+        // 'SUCCESS_MESSAGE' => __('Successful Operation', 'intl_qa_lan')
+    ));
     // wp_enqueue_style('admin-styles', RSC_ADMIN_CSS . 'admin-styles.css', '1.0.1');
 });
 
@@ -42,4 +42,5 @@ register_deactivation_hook(__FILE__, 'RSC_deactivate_function');
 include(RSC_INC . 'shortcodes.php');
 if (is_admin()) {
     include(RSC_ADMIN . 'sp_shortcode_metabox.php');
+    include(RSC_ADMIN . 'ajax_requests.php');
 }
