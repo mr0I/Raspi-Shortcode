@@ -28,7 +28,7 @@ add_action('admin_enqueue_scripts', function () {
         'AJAXURL' => admin_url('admin-ajax.php'),
         'SECURITY' => wp_create_nonce('OwpCojMcdGJ-k-o'),
         'REQUEST_TIMEOUT' => 30000,
-        // 'SAVE_TEXT' => __('Save', 'intl_qa_lan'),
+        'SELECT_POST_LIST_TEXT' => __('Select Post...', 'raspi_shortcode'),
         // 'SUCCESS_MESSAGE' => __('Successful Operation', 'intl_qa_lan')
     ));
     // wp_enqueue_style('admin-styles', RSC_ADMIN_CSS . 'admin-styles.css', '1.0.1');
