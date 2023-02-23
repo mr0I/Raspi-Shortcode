@@ -35,15 +35,17 @@ function fetchSinglePost_callback()
     $postId = sanitize_text_field($_POST['post_id']);
     $postType = sanitize_text_field($_POST['post_type']);
 
-    $args = [
-        'p' => $postId,
-        'post_type' => $postType,
-        'posts_per_page' => 1,
-        'offset' => 0,
-        'post_status' => 'publish'
-    ];
-    $results = new WP_Query($args);
-    $post = $results->posts;
+    // $args = [
+    //     'p' => $postId,
+    //     'post_type' => $postType,
+    //     'posts_per_page' => 1,
+    //     'offset' => 0,
+    //     'post_status' => 'publish'
+    // ];
+    // $results = new WP_Query($args);
+    // $post = $results->posts;
+
+    $post = getSinglePost($postId, $postType);
 
     wp_send_json(['data' => $post], 200);
 }

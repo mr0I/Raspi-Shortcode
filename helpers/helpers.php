@@ -1,6 +1,6 @@
 <?php
 
-function getOnePost($post_id, $post_type)
+function getSinglePost($post_id, $post_type)
 {
     $args = [
         'p' => $post_id,

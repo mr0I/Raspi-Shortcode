@@ -1,14 +1,11 @@
 <?php defined('ABSPATH') or die('No script kiddies please!');
 
-
 $postTypes = get_post_types([
     'public'   => true,
     '_builtin' => false
 ], 'object');
-
-// wp_die(json_encode($postTypes, JSON_PRETTY_PRINT));
-
 ?>
+
 <form action="" name="sp_shortcode">
     <select id="sp_post_types" onchange="changePostType(event)" style="width: 100%;margin-bottom: 16px;">
         <?php foreach ($postTypes as $postType) : ?>

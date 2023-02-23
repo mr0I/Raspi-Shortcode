@@ -8,6 +8,6 @@ add_action('init', function () {
 function insertRaspi($atts, $content = null)
 {
     ob_start();
-    include(RSC_ROOTDIR . './site/templates/raspi_widget.php');
+    include(RSC_ROOTDIR . './site/templates/customPostType_widget.php');
     return do_shortcode(ob_get_clean());
 }

@@ -1,6 +1,13 @@
 jQuery(document).ready(function ($) {
-    // codes ...
+    /** Inits */
     window.jq = $;
+
+    /** Copy Shortcode To Clipboard */
+    $('.shortcode-value').on('click', async function () {
+        const elmText = $(this).text().trim();
+        await copyToClipboard(elmText);
+        alert(RSC_ADMIN_Ajax.SUCCESS_COPY_TO_CLIP);
+    })
 });
 
 
@@ -65,17 +72,15 @@ function changePostId(event) {
             //$(submitBtn).val(RSC_ADMIN_Ajax.SAVING_TEXT).attr('disabled', true);
         },
         success: (res, xhr) => {
-            console.log(res);
-            // const selectedPosts = res.data;
-            // if (xhr) {
-            //     const selectBoxList = document.getElementById('sp_posts_list');
-            //     jq(selectBoxList).html(`<option value="0" disabled selected>${RSC_ADMIN_Ajax.SELECT_POST_LIST_TEXT}</option>`);
-            //     selectedPosts.forEach(post => {
-            //         jq(selectBoxList).append(`
-            //              <option value="${post.ID}">${post.post_title}</option>
-            //         `);
-            //     });
-            // }
+            const shortcodeValue = jq('.shortcode-value');
+            if (xhr) {
+                const postData = res.data[0];
+                jq(shortcodeValue).find('#post_id').text(postData.ID);
+                jq(shortcodeValue).find('#post_type').text(postData.post_type);
+                // console.log(jq(shortcodeValue).text().trim());
+            }
+
+
         },
         error: (jqXHR, textStatus, errorThrown) => {
             // showErrorToast(jqXHR.responseJSON.data);
@@ -88,3 +93,28 @@ function changePostId(event) {
 
 
 }
+
+// function copyShortcode(){
+
+// }
+const copyToClipboard = async (str) => {
+    let el = document.createElement('textarea');
+    el.value = str;
+    el.setAttribute('readonly', '');
+    el.style = { position: 'absolute', left: '-9999px' };
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+}
+
+// function copyToClipboard(str) {
+//     let el = document.createElement('textarea');
+//     el.value = str;
+//     el.setAttribute('readonly', '');
+//     el.style = { position: 'absolute', left: '-9999px' };
+//     document.body.appendChild(el);
+//     el.select();
+//     document.execCommand('copy');
+//     document.body.removeChild(el);
+// }

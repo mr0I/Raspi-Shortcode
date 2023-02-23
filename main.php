@@ -29,7 +29,7 @@ add_action('admin_enqueue_scripts', function () {
         'SECURITY' => wp_create_nonce('OwpCojMcdGJ-k-o'),
         'REQUEST_TIMEOUT' => 30000,
         'SELECT_POST_LIST_TEXT' => __('Select Post...', 'raspi_shortcode'),
-        // 'SUCCESS_MESSAGE' => __('Successful Operation', 'intl_qa_lan')
+        'SUCCESS_COPY_TO_CLIP' => __('The text copied to clipboard successfully :D', 'raspi_shortcode')
     ));
     // wp_enqueue_style('admin-styles', RSC_ADMIN_CSS . 'admin-styles.css', '1.0.1');
 });
