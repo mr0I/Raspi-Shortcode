@@ -12,7 +12,6 @@ function fetchPosts_callback()
     $postType = sanitize_text_field($_POST['post_type']);
     $args = [
         'post_type' => $postType,
-        // 'posts_per_page' => 1,
         'offset' => 0,
         'post_status' => 'publish'
     ];

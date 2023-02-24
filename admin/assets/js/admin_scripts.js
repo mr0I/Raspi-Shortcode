@@ -12,7 +12,7 @@ jQuery(document).ready(function ($) {
 
 
 function changePostType(event) {
-    // console.log(event.target.value);
+    jq('.shortcode-value').css('display', 'none');
     const postType = event.target.value || event.currentTarget.value;
     const nonce = document.getElementById('sp_shortcode_nonce').value;
 
@@ -55,9 +55,6 @@ function changePostId(event) {
     const postType = document.getElementById('sp_post_types').value;
     const nonce = document.getElementById('sp_shortcode_nonce').value;
 
-
-    console.log(postId);
-
     jq.ajax({
         url: CPTS_ADMIN_Ajax.AJAXURL,
         type: 'POST',
@@ -75,12 +72,11 @@ function changePostId(event) {
             const shortcodeValue = jq('.shortcode-value');
             if (xhr) {
                 const postData = res.data[0];
-                jq(shortcodeValue).find('#post_id').text(postData.ID);
-                jq(shortcodeValue).find('#post_type').text(postData.post_type);
-                // console.log(jq(shortcodeValue).text().trim());
+                jq(shortcodeValue)
+                    .slideDown('fast').delay(400)
+                    .find('#post_id').text(postData.ID).end()
+                    .find('#post_type').text(postData.post_type);
             }
-
-
         },
         error: (jqXHR, textStatus, errorThrown) => {
             // showErrorToast(jqXHR.responseJSON.data);
@@ -94,9 +90,7 @@ function changePostId(event) {
 
 }
 
-// function copyShortcode(){
 
-// }
 const copyToClipboard = async (str) => {
     let el = document.createElement('textarea');
     el.value = str;
@@ -107,14 +101,3 @@ const copyToClipboard = async (str) => {
     document.execCommand('copy');
     document.body.removeChild(el);
 }
-
-// function copyToClipboard(str) {
-//     let el = document.createElement('textarea');
-//     el.value = str;
-//     el.setAttribute('readonly', '');
-//     el.style = { position: 'absolute', left: '-9999px' };
-//     document.body.appendChild(el);
-//     el.select();
-//     document.execCommand('copy');
-//     document.body.removeChild(el);
-// }

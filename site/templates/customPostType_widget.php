@@ -9,15 +9,11 @@ extract(shortcode_atts(array(
     'post_type' => ''
 ), $atts));
 
-// wp_die(json_encode([
-//     'pid' => $post_id,
-//     'pt' => $post_type
-// ], JSON_PRETTY_PRINT));
-
 $post = [];
 if ($post_id !== '' && $post_type !== '') {
     $post = getSinglePost($post_id, $post_type);
 }
+
 $isRtl = !!str_starts_with(get_locale(), 'fa_');
 ?>
 

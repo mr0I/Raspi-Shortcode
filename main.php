@@ -17,6 +17,7 @@ define('CPTS_INC', CPTS_ROOTDIR . 'includes/');
 define('CPTS_ADMIN', CPTS_ROOTDIR . 'admin/');
 define('CPTS_ADMIN_TEMPLATE_DIR', CPTS_ADMIN . 'templates/');
 define('CPTS_ADMIN_JS', plugin_dir_url(__FILE__) . 'admin/assets/js/');
+define('CPTS_ADMIN_CSS', plugin_dir_url(__FILE__) . 'admin/assets/css/');
 define('CPTS_CSS', plugin_dir_url(__FILE__) . 'site/static/css/');
 
 add_action('admin_enqueue_scripts', function () {
@@ -28,6 +29,7 @@ add_action('admin_enqueue_scripts', function () {
         'SELECT_POST_LIST_TEXT' => __('Select Post...', 'cpt_shortcode'),
         'SUCCESS_COPY_TO_CLIP' => __('The text copied to clipboard successfully :D', 'cpt_shortcode')
     ));
+    wp_enqueue_style('rsc-admin-styles', CPTS_ADMIN_CSS . 'admin_styles.css', '1.0.0');
 });
 add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('rsc-styles', CPTS_CSS . 'main.css', '1.0.0');

@@ -1,0 +1,9 @@
+.shortcode .shortcode-value {
+    display: none;
+    padding: 8px;
+    margin: 8px auto;
+    text-align: center;
+    color: lightseagreen;
+    border: 2px dashed lightseagreen;
+    cursor: pointer;
+}
