@@ -17,8 +17,11 @@ if ($post_id !== '' && $post_type !== '') {
 $isRtl = !!str_starts_with(get_locale(), 'fa_');
 ?>
 
-
-<?php if (sizeof($post) !== 0) : ?>
+<?php if (sizeof($post) !== 0) :
+    $postThumbnailSrc = get_the_post_thumbnail_url($post[0]->ID, 'large') != ''
+        ? get_the_post_thumbnail_url($post[0]->ID, 'large')
+        : CPTS_STATIC . 'images/not_available.jpg';
+?>
     <section class="customTypeWidget">
         <div class="customTypeWidget__container">
             <div class="customTypeWidget__content <?= $isRtl ? 'rtl' : 'ltr' ?>">
@@ -27,7 +30,7 @@ $isRtl = !!str_starts_with(get_locale(), 'fa_');
             </div>
             <div class="customTypeWidget__image">
                 <figure>
-                    <img src="<?= get_the_post_thumbnail_url($post[0]->ID, 'large') ?>" alt="<?= $post[0]->post_title; ?>" />
+                    <img src="<?= $postThumbnailSrc ?>" alt="<?= $post[0]->post_title; ?>" />
                 </figure>
             </div>
         </div>

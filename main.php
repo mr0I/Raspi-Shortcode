@@ -8,17 +8,22 @@
  * Author: ZeroOne
  * Author URI: http://localhost
  * Text Domain: cpt_shortcode
- * Domain Path: /languages
+ * Domain Path: /l10n
  */
 defined('ABSPATH') or die('No script kiddies please!');
-
 define('CPTS_ROOTDIR', plugin_dir_path(__FILE__));
 define('CPTS_INC', CPTS_ROOTDIR . 'includes/');
 define('CPTS_ADMIN', CPTS_ROOTDIR . 'admin/');
 define('CPTS_ADMIN_TEMPLATE_DIR', CPTS_ADMIN . 'templates/');
 define('CPTS_ADMIN_JS', plugin_dir_url(__FILE__) . 'admin/assets/js/');
 define('CPTS_ADMIN_CSS', plugin_dir_url(__FILE__) . 'admin/assets/css/');
+define('CPTS_STATIC', plugin_dir_url(__FILE__) . 'site/static/');
 define('CPTS_CSS', plugin_dir_url(__FILE__) . 'site/static/css/');
+
+add_action('plugins_loaded', function () {
+    load_plugin_textdomain('cpt_shortcode', false, basename(CPTS_ROOTDIR) . '/l10n/');
+});
+
 
 add_action('admin_enqueue_scripts', function () {
     wp_enqueue_script('rsc-admin-script', CPTS_ADMIN_JS . 'admin_scripts.js', array('jquery'), '1.0.0');
