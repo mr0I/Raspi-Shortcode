@@ -1,6 +1,6 @@
 <?php defined('ABSPATH') or die('No script kiddies please!');
 
-require_once(RSC_ROOTDIR . './helpers/helpers.php');
+require_once(CPTS_ROOTDIR . './helpers/helpers.php');
 
 function fetchPosts_callback()
 {

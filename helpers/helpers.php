@@ -9,6 +9,6 @@ function getSinglePost($post_id, $post_type)
         'offset' => 0,
         'post_status' => 'publish'
     ];
-    $results = new WP_Query($args);
-    return $results->posts;
+    $result = new WP_Query($args);
+    return $result->posts;
 }

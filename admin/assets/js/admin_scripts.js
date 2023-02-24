@@ -6,7 +6,7 @@ jQuery(document).ready(function ($) {
     $('.shortcode-value').on('click', async function () {
         const elmText = $(this).text().trim();
         await copyToClipboard(elmText);
-        alert(RSC_ADMIN_Ajax.SUCCESS_COPY_TO_CLIP);
+        alert(CPTS_ADMIN_Ajax.SUCCESS_COPY_TO_CLIP);
     })
 });
 
@@ -17,22 +17,22 @@ function changePostType(event) {
     const nonce = document.getElementById('sp_shortcode_nonce').value;
 
     jq.ajax({
-        url: RSC_ADMIN_Ajax.AJAXURL,
+        url: CPTS_ADMIN_Ajax.AJAXURL,
         type: 'POST',
         data: {
-            SECURITY: RSC_ADMIN_Ajax.SECURITY,
+            SECURITY: CPTS_ADMIN_Ajax.SECURITY,
             action: 'fetchPosts',
             nonce: nonce,
             post_type: postType
         },
         beforeSend: () => {
-            //$(submitBtn).val(RSC_ADMIN_Ajax.SAVING_TEXT).attr('disabled', true);
+            //$(submitBtn).val(CPTS_ADMIN_Ajax.SAVING_TEXT).attr('disabled', true);
         },
         success: (res, xhr) => {
             const selectedPosts = res.data;
             if (xhr) {
                 const selectBoxList = document.getElementById('sp_posts_list');
-                jq(selectBoxList).html(`<option value="0" disabled selected>${RSC_ADMIN_Ajax.SELECT_POST_LIST_TEXT}</option>`);
+                jq(selectBoxList).html(`<option value="0" disabled selected>${CPTS_ADMIN_Ajax.SELECT_POST_LIST_TEXT}</option>`);
                 selectedPosts.forEach(post => {
                     jq(selectBoxList).append(`
                          <option value="${post.ID}">${post.post_title}</option>
@@ -44,9 +44,9 @@ function changePostType(event) {
             // showErrorToast(jqXHR.responseJSON.data);
         },
         complete: () => {
-            // $(submitBtn).val(RSC_ADMIN_Ajax.SAVE_TEXT).attr('disabled', false);
+            // $(submitBtn).val(CPTS_ADMIN_Ajax.SAVE_TEXT).attr('disabled', false);
         },
-        timeout: RSC_ADMIN_Ajax.REQUEST_TIMEOUT
+        timeout: CPTS_ADMIN_Ajax.REQUEST_TIMEOUT
     });
 }
 
@@ -59,17 +59,17 @@ function changePostId(event) {
     console.log(postId);
 
     jq.ajax({
-        url: RSC_ADMIN_Ajax.AJAXURL,
+        url: CPTS_ADMIN_Ajax.AJAXURL,
         type: 'POST',
         data: {
-            SECURITY: RSC_ADMIN_Ajax.SECURITY,
+            SECURITY: CPTS_ADMIN_Ajax.SECURITY,
             action: 'fetchSinglePost',
             nonce: nonce,
             post_id: postId,
             post_type: postType
         },
         beforeSend: () => {
-            //$(submitBtn).val(RSC_ADMIN_Ajax.SAVING_TEXT).attr('disabled', true);
+            //$(submitBtn).val(CPTS_ADMIN_Ajax.SAVING_TEXT).attr('disabled', true);
         },
         success: (res, xhr) => {
             const shortcodeValue = jq('.shortcode-value');
@@ -86,9 +86,9 @@ function changePostId(event) {
             // showErrorToast(jqXHR.responseJSON.data);
         },
         complete: () => {
-            // $(submitBtn).val(RSC_ADMIN_Ajax.SAVE_TEXT).attr('disabled', false);
+            // $(submitBtn).val(CPTS_ADMIN_Ajax.SAVE_TEXT).attr('disabled', false);
         },
-        timeout: RSC_ADMIN_Ajax.REQUEST_TIMEOUT
+        timeout: CPTS_ADMIN_Ajax.REQUEST_TIMEOUT
     });
 
 

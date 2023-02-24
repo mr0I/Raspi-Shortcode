@@ -15,13 +15,13 @@ $postTypes = get_post_types([
             <?php endforeach; ?>
     </select>
     <select id="sp_posts_list" onchange="changePostId(event)" style="width: 100%;margin-bottom: 16px;">
-        <option value="0" disabled selected><?= __('Select Post...', 'raspi_shortcode') ?></option>
+        <option value="0" disabled selected><?= __('Select Post...', 'cpt_shortcode') ?></option>
     </select>
     <input type="hidden" id="sp_shortcode_nonce" value="<?= wp_create_nonce('sp-shortcode-nonce') ?>">
 </form>
 
 <div class="shortcode">
     <p class="shortcode-value" style="direction: ltr;">
-        [insert_raspi post_id="<span id="post_id"></span>" post_type="<span id="post_type"></span>"]
+        [insert_cpt post_id="<span id="post_id"></span>" post_type="<span id="post_type"></span>"]
     </p>
 </div>

@@ -1,46 +1,43 @@
 <?php
 
 /**
- * Plugin Name: Raspi Shortcode
+ * Plugin Name: Custom Post-Type Shortcode
  * Plugin URI: http://localhost
  * Description:
  * Version: 1.0.0
  * Author: ZeroOne
  * Author URI: http://localhost
- * Text Domain: raspi_shortcode
+ * Text Domain: cpt_shortcode
  * Domain Path: /languages
  */
-
-
 defined('ABSPATH') or die('No script kiddies please!');
 
-define('RSC_ROOTDIR', plugin_dir_path(__FILE__));
-define('RSC_INC', RSC_ROOTDIR . 'includes/');
-define('RSC_ADMIN', RSC_ROOTDIR . 'admin/');
-define('RSC_ADMIN_TEMPLATE_DIR', RSC_ADMIN . 'templates/');
-define('RSC_ADMIN_JS', plugin_dir_url(__FILE__) . 'admin/assets/js/');
-
-
+define('CPTS_ROOTDIR', plugin_dir_path(__FILE__));
+define('CPTS_INC', CPTS_ROOTDIR . 'includes/');
+define('CPTS_ADMIN', CPTS_ROOTDIR . 'admin/');
+define('CPTS_ADMIN_TEMPLATE_DIR', CPTS_ADMIN . 'templates/');
+define('CPTS_ADMIN_JS', plugin_dir_url(__FILE__) . 'admin/assets/js/');
+define('CPTS_CSS', plugin_dir_url(__FILE__) . 'site/static/css/');
 
 add_action('admin_enqueue_scripts', function () {
-    wp_enqueue_script('rsc-admin-script', RSC_ADMIN_JS . 'admin_scripts.js', array('jquery'), '1.0.0');
-    wp_localize_script('rsc-admin-script', 'RSC_ADMIN_Ajax', array(
+    wp_enqueue_script('rsc-admin-script', CPTS_ADMIN_JS . 'admin_scripts.js', array('jquery'), '1.0.0');
+    wp_localize_script('rsc-admin-script', 'CPTS_ADMIN_Ajax', array(
         'AJAXURL' => admin_url('admin-ajax.php'),
         'SECURITY' => wp_create_nonce('OwpCojMcdGJ-k-o'),
         'REQUEST_TIMEOUT' => 30000,
-        'SELECT_POST_LIST_TEXT' => __('Select Post...', 'raspi_shortcode'),
-        'SUCCESS_COPY_TO_CLIP' => __('The text copied to clipboard successfully :D', 'raspi_shortcode')
+        'SELECT_POST_LIST_TEXT' => __('Select Post...', 'cpt_shortcode'),
+        'SUCCESS_COPY_TO_CLIP' => __('The text copied to clipboard successfully :D', 'cpt_shortcode')
     ));
-    // wp_enqueue_style('admin-styles', RSC_ADMIN_CSS . 'admin-styles.css', '1.0.1');
 });
-
-
+add_action('wp_enqueue_scripts', function () {
+    wp_enqueue_style('rsc-styles', CPTS_CSS . 'main.css', '1.0.0');
+});
 /** Init & Includes */
-include(RSC_ROOTDIR . 'base_functions.php');
-register_activation_hook(__FILE__, 'RSC_activate_function');
-register_deactivation_hook(__FILE__, 'RSC_deactivate_function');
-include(RSC_INC . 'shortcodes.php');
+include(CPTS_ROOTDIR . 'base_functions.php');
+register_activation_hook(__FILE__, 'CPTS_activate_function');
+register_deactivation_hook(__FILE__, 'CPTS_deactivate_function');
+include(CPTS_INC . 'shortcodes.php');
 if (is_admin()) {
-    include(RSC_ADMIN . 'sp_shortcode_metabox.php');
-    include(RSC_ADMIN . 'ajax_requests.php');
+    include(CPTS_ADMIN . 'sp_shortcode_metabox.php');
+    include(CPTS_ADMIN . 'ajax_requests.php');
 }

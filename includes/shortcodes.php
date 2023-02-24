@@ -2,12 +2,12 @@
 
 
 add_action('init', function () {
-    add_shortcode('insert_raspi', 'insertRaspi');
+    add_shortcode('insert_cpt', 'insertRaspi');
 });
 
 function insertRaspi($atts, $content = null)
 {
     ob_start();
-    include(RSC_ROOTDIR . './site/templates/customPostType_widget.php');
+    include(CPTS_ROOTDIR . './site/templates/customPostType_widget.php');
     return do_shortcode(ob_get_clean());
 }
