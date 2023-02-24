@@ -1,6 +1,8 @@
 jQuery(document).ready(function ($) {
+    "use strict";
     /** Inits */
     window.jq = $;
+    initVanillaBox('#sp_posts_list');
 
     /** Copy Shortcode To Clipboard */
     $('.shortcode-value').on('click', async function () {
@@ -26,7 +28,7 @@ function changePostType(event) {
             post_type: postType
         },
         beforeSend: () => {
-            //$(submitBtn).val(CPTS_ADMIN_Ajax.SAVING_TEXT).attr('disabled', true);
+            jq('.loader-spinner').css('display', 'block');
         },
         success: (res, xhr) => {
             const selectedPosts = res.data;
@@ -38,13 +40,15 @@ function changePostType(event) {
                          <option value="${post.ID}">${post.post_title}</option>
                     `);
                 });
+
+                initVanillaBox('#sp_posts_list');
             }
         },
         error: (jqXHR, textStatus, errorThrown) => {
-            // showErrorToast(jqXHR.responseJSON.data);
+            console.log(errorThrown);
         },
         complete: () => {
-            // $(submitBtn).val(CPTS_ADMIN_Ajax.SAVE_TEXT).attr('disabled', false);
+            jq('.loader-spinner').css('display', 'none');
         },
         timeout: CPTS_ADMIN_Ajax.REQUEST_TIMEOUT
     });
@@ -66,7 +70,7 @@ function changePostId(event) {
             post_type: postType
         },
         beforeSend: () => {
-            //$(submitBtn).val(CPTS_ADMIN_Ajax.SAVING_TEXT).attr('disabled', true);
+            jq('.loader-spinner').css('display', 'block');
         },
         success: (res, xhr) => {
             const shortcodeValue = jq('.shortcode-value');
@@ -79,17 +83,16 @@ function changePostId(event) {
             }
         },
         error: (jqXHR, textStatus, errorThrown) => {
-            // showErrorToast(jqXHR.responseJSON.data);
+            console.log(errorThrown);
         },
         complete: () => {
-            // $(submitBtn).val(CPTS_ADMIN_Ajax.SAVE_TEXT).attr('disabled', false);
+            jq('.loader-spinner').css('display', 'none');
         },
         timeout: CPTS_ADMIN_Ajax.REQUEST_TIMEOUT
     });
 
 
 }
-
 
 const copyToClipboard = async (str) => {
     let el = document.createElement('textarea');
@@ -100,4 +103,12 @@ const copyToClipboard = async (str) => {
     el.select();
     document.execCommand('copy');
     document.body.removeChild(el);
+}
+
+const initVanillaBox = (elm) => {
+    new vanillaSelectBox(elm, {
+        "maxHeight": 200,
+        "search": true,
+        "translations": { "all": "همه", "items": "آیتم ها", "selectAll": "انتخاب همه", "clearAll": "حذف همه", "placeHolder": "یک مورد را انتخاب کنید..." }
+    });
 }

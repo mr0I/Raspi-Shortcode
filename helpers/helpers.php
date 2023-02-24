@@ -1,5 +1,16 @@
 <?php
 
+function getAllPosts($post_type)
+{
+    $args = [
+        'post_type' => $post_type,
+        'offset' => 0,
+        'post_status' => 'publish'
+    ];
+    $results = new WP_Query($args);
+    return $results->posts;
+}
+
 function getSinglePost($post_id, $post_type)
 {
     $args = [

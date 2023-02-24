@@ -10,13 +10,7 @@ function fetchPosts_callback()
     }
 
     $postType = sanitize_text_field($_POST['post_type']);
-    $args = [
-        'post_type' => $postType,
-        'offset' => 0,
-        'post_status' => 'publish'
-    ];
-    $results = new WP_Query($args);
-    $posts = $results->posts;
+    $posts = getAllPosts($postType);
 
     wp_send_json(['data' => $posts], 200);
     exit();

@@ -20,6 +20,10 @@ $postTypes = get_post_types([
             <option value="0" disabled selected><?= __('Select Post...', 'cpt_shortcode') ?></option>
         </select>
         <input type="hidden" id="sp_shortcode_nonce" value="<?= wp_create_nonce('sp-shortcode-nonce') ?>">
+
+        <div class="loader-spinner">
+            <span class="dashicons dashicons-image-rotate spin"></span>
+        </div>
     </form>
 
     <div class="shortcode">

@@ -6,7 +6,7 @@
  * Description:
  * Version: 1.0.0
  * Author: ZeroOne
- * Author URI: http://localhost
+ * Author URI: https://github.com/tuderiewsc
  * Text Domain: cpt_shortcode
  * Domain Path: /l10n
  */
@@ -26,6 +26,7 @@ add_action('plugins_loaded', function () {
 
 
 add_action('admin_enqueue_scripts', function () {
+    wp_enqueue_script('vanillaSelectBox-script', CPTS_ADMIN_JS . 'vanillaSelectBox.js', array(), '0.78');
     wp_enqueue_script('rsc-admin-script', CPTS_ADMIN_JS . 'admin_scripts.js', array('jquery'), '1.0.0');
     wp_localize_script('rsc-admin-script', 'CPTS_ADMIN_Ajax', array(
         'AJAXURL' => admin_url('admin-ajax.php'),
@@ -34,6 +35,8 @@ add_action('admin_enqueue_scripts', function () {
         'SELECT_POST_LIST_TEXT' => __('Select Post...', 'cpt_shortcode'),
         'SUCCESS_COPY_TO_CLIP' => __('The text copied to clipboard successfully :D', 'cpt_shortcode')
     ));
+
+    wp_enqueue_style('vanillaSelectBox-css', CPTS_ADMIN_CSS . 'vanillaSelectBox.css', null);
     wp_enqueue_style('rsc-admin-styles', CPTS_ADMIN_CSS . 'admin_styles.css', '1.0.0');
 });
 add_action('wp_enqueue_scripts', function () {

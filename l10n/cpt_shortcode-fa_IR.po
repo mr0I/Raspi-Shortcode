@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Custom Post-Type Shortcode\n"
 "POT-Creation-Date: 2023-02-24 14:39+0330\n"
-"PO-Revision-Date: 2023-02-24 15:14+0330\n"
+"PO-Revision-Date: 2023-02-24 18:03+0330\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -35,7 +35,7 @@ msgstr "انتخاب پست..."
 
 #: main.php:31
 msgid "The text copied to clipboard successfully :D"
-msgstr "کد کوتاه در حافظه کلیپ بورد ذخیره شد :D"
+msgstr "کد کوتاه در حافظه کلیپ بورد ذخیره شد D:"
 
 #: site/templates/customPostType_widget.php:29
 msgid "Read More..."
