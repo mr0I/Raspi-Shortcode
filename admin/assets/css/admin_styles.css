@@ -9,31 +9,9 @@
     margin-bottom: 0;
 }
 
-/** Vanilabox */
-.vsb-main {
-    text-align: right !important;
+/** Select2 */
+.select2.select2-container {
     width: 100% !important;
-}
-
-.vsb-main>button {
-    text-align: right !important;
-}
-
-.vsb-main>button span.caret {
-    right: unset !important;
-    left: 8px;
-}
-
-.vsb-menu {
-    width: 100%;
-}
-
-.vsb-menu>ul {
-    max-width: 100% !important;
-}
-
-.vsb-js-search-zone {
-    width: 90% !important;
 }
 
 

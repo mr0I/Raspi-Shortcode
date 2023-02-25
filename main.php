@@ -26,6 +26,7 @@ add_action('plugins_loaded', function () {
 
 
 add_action('admin_enqueue_scripts', function () {
+    wp_enqueue_script('select2-script', CPTS_ADMIN_JS . 'select2.min.js', array(), '4.1.0');
     wp_enqueue_script('vanillaSelectBox-script', CPTS_ADMIN_JS . 'vanillaSelectBox.js', array(), '0.78');
     wp_enqueue_script('rsc-admin-script', CPTS_ADMIN_JS . 'admin_scripts.js', array('jquery'), '1.0.0');
     wp_localize_script('rsc-admin-script', 'CPTS_ADMIN_Ajax', array(
@@ -36,6 +37,7 @@ add_action('admin_enqueue_scripts', function () {
         'SUCCESS_COPY_TO_CLIP' => __('The text copied to clipboard successfully :D', 'cpt_shortcode')
     ));
 
+    wp_enqueue_style('select2-css', CPTS_ADMIN_CSS . 'select2.min.css', null);
     wp_enqueue_style('vanillaSelectBox-css', CPTS_ADMIN_CSS . 'vanillaSelectBox.css', null);
     wp_enqueue_style('rsc-admin-styles', CPTS_ADMIN_CSS . 'admin_styles.css', '1.0.0');
 });
@@ -50,4 +52,5 @@ include(CPTS_INC . 'shortcodes.php');
 if (is_admin()) {
     include(CPTS_ADMIN . 'sp_shortcode_metabox.php');
     include(CPTS_ADMIN . 'ajax_requests.php');
+    include(CPTS_ADMIN . 'admin_process.php');
 }

@@ -7,8 +7,10 @@ add_action('add_meta_boxes', function ($post_type, $post) {
         function ($post) {
             include(CPTS_ADMIN_TEMPLATE_DIR . 'sp_shortcode_metabox_content.php');
         },
-        'post',
-        // array('post', 'raspi'),
+        // 'post',
+        gettype(get_option('cpts_postTypes', '')) === 'string'
+            ? json_decode(get_option('cpts_postTypes', ''), false)
+            : [],
         'side',
         'high'
     );

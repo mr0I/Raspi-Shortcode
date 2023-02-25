@@ -23,3 +23,11 @@ function getSinglePost($post_id, $post_type)
     $result = new WP_Query($args);
     return $result->posts;
 }
+
+function getPostTypesList()
+{
+    return get_post_types([
+        'public'   => true,
+        '_builtin' => false
+    ], 'object');
+}

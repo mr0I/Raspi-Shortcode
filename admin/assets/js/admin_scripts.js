@@ -2,7 +2,8 @@ jQuery(document).ready(function ($) {
     "use strict";
     /** Inits */
     window.jq = $;
-    initVanillaBox('#sp_posts_list');
+    initSelect2('#contained_cpts_select', 'asdada');
+    initSelect2('#sp_posts_list');
 
     /** Copy Shortcode To Clipboard */
     $('.shortcode-value').on('click', async function () {
@@ -40,8 +41,6 @@ function changePostType(event) {
                          <option value="${post.ID}">${post.post_title}</option>
                     `);
                 });
-
-                initVanillaBox('#sp_posts_list');
             }
         },
         error: (jqXHR, textStatus, errorThrown) => {
@@ -105,10 +104,12 @@ const copyToClipboard = async (str) => {
     document.body.removeChild(el);
 }
 
-const initVanillaBox = (elm) => {
-    new vanillaSelectBox(elm, {
-        "maxHeight": 200,
-        "search": true,
-        "translations": { "all": "همه", "items": "آیتم ها", "selectAll": "انتخاب همه", "clearAll": "حذف همه", "placeHolder": "یک مورد را انتخاب کنید..." }
+const initSelect2 = (elm, placeholder = '') => {
+    jq(elm).select2({
+        language: 'fa',
+        dir: 'rtl',
+        placeholder: placeholder,
+        allowClear: true,
+        maximumInputLength: 10
     });
 }
