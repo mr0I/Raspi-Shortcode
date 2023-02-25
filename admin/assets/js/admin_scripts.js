@@ -2,7 +2,7 @@ jQuery(document).ready(function ($) {
     "use strict";
     /** Inits */
     window.jq = $;
-    initSelect2('#contained_cpts_select', 'asdada');
+    initSelect2('#contained_cpts_select', CPTS_ADMIN_Ajax.Selected_Post_Types_TEXT);
     initSelect2('#sp_posts_list');
 
     /** Copy Shortcode To Clipboard */
@@ -110,6 +110,6 @@ const initSelect2 = (elm, placeholder = '') => {
         dir: 'rtl',
         placeholder: placeholder,
         allowClear: true,
-        maximumInputLength: 10
+        maximumInputLength: 20
     });
 }

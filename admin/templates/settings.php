@@ -1,18 +1,15 @@
 <?php defined('ABSPATH') or die('No script kiddies please!');
 
+
 $customPostTypes = getPostTypesList();
-
-
 $selectedPostTypes = gettype(get_option('cpts_postTypes', '')) === 'string'
     ? json_decode(get_option('cpts_postTypes', ''), false)
     : [];
-// $selectedPostTypes = json_decode(get_option('cpts_postTypes', ''), false);
 
 if ($_REQUEST['submit']) {
     update_option('cpts_postTypes', []);
 
     if (isset($_POST['post_types'])) {
-        // wp_die(json_encode($_POST['post_types'], JSON_PRETTY_PRINT));
         update_option('cpts_postTypes', json_encode($_POST['post_types']));
     }
 
@@ -22,24 +19,19 @@ if ($_REQUEST['submit']) {
         ? json_decode(get_option('cpts_postTypes', ''), false)
         : [];
 }
-
-
-var_dump($selectedPostTypes);
-
 ?>
-
 
 <div class="wrap">
     <h2><?= __('Settings', 'cpt_shortcode') ?></h2>
     <div class="nav-tab-wrapper">
-        <a href="?page=cpts&amp;tab=home_page" class="nav-tab">تنظیمات صفحه اصلی</a>
+        <a href="?page=cpts&amp;tab=home_page" class="nav-tab"><?= __('Main Settings', 'cpt_shortcode') ?></a>
     </div>
 
     <form method="post" action="">
         <table class="form-table" role="presentation">
             <tbody>
                 <tr>
-                    <th scope="row">محصولات سایدبار</th>
+                    <th scope="row"><?= __('Selected Post Types', 'cpt_shortcode') ?></th>
                     <td>
                         <select id="contained_cpts_select" name="post_types[]" multiple>
                             <?php foreach ($customPostTypes as $postType) :
@@ -56,7 +48,7 @@ var_dump($selectedPostTypes);
             </tbody>
         </table>
         <p class="submit">
-            <input type="submit" name="submit" id="submit" class="button button-primary" value="ذخیرهٔ تغییرات">
+            <input type="submit" name="submit" id="submit" class="button button-primary" value="<?= __('Save Settings', 'cpt_shortcode') ?>">
         </p>
     </form>
 </div>

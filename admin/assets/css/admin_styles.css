@@ -9,8 +9,13 @@
     margin-bottom: 0;
 }
 
+.nav-tab-wrapper>.nav-tab:hover {
+    text-decoration: none;
+}
+
 /** Select2 */
-.select2.select2-container {
+.select2.select2-container,
+.select2-search.select2-search--inline {
     width: 100% !important;
 }
 

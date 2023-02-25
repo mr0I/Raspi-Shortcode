@@ -34,7 +34,8 @@ add_action('admin_enqueue_scripts', function () {
         'SECURITY' => wp_create_nonce('OwpCojMcdGJ-k-o'),
         'REQUEST_TIMEOUT' => 30000,
         'SELECT_POST_LIST_TEXT' => __('Select Post...', 'cpt_shortcode'),
-        'SUCCESS_COPY_TO_CLIP' => __('The text copied to clipboard successfully :D', 'cpt_shortcode')
+        'SUCCESS_COPY_TO_CLIP' => __('The text copied to clipboard successfully :D', 'cpt_shortcode'),
+        'Selected_Post_Types_TEXT' => __('Select Your Post Types', 'cpt_shortcode')
     ));
 
     wp_enqueue_style('select2-css', CPTS_ADMIN_CSS . 'select2.min.css', null);

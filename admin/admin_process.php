@@ -14,16 +14,4 @@ add_action('admin_menu', function () {
         },
         'dashicons-shortcode'
     );
-
-    // add_submenu_page(
-    //     null,
-    //     __('Edit QA', 'cpt_shortcode'),
-    //     __('Edit QA', 'cpt_shortcode'),
-    //     'administrator',
-    //     'cpts_editQA',
-    //     function () {
-    //         include(cpts_ADMIN_VIEW . 'qa-update.php');
-    //     }
-    // );
-
 });

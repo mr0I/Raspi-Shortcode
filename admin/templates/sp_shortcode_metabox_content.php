@@ -1,9 +1,6 @@
 <?php defined('ABSPATH') or die('No script kiddies please!');
 
-$postTypes = get_post_types([
-    'public'   => true,
-    '_builtin' => false
-], 'object');
+$postTypes = getPostTypesList();
 ?>
 
 <div style="padding: 10px 0;">
