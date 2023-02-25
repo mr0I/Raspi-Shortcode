@@ -10,7 +10,7 @@ add_action('add_meta_boxes', function ($post_type, $post) {
         // 'post',
         gettype(get_option('cpts_postTypes', '')) === 'string'
             ? json_decode(get_option('cpts_postTypes', ''), false)
-            : [],
+            : 'post',
         'side',
         'high'
     );
