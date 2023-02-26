@@ -31,9 +31,20 @@ if (!function_exists('getSinglePost')) {
 if (!function_exists('getPostTypesList')) {
     function getPostTypesList()
     {
-        return get_post_types([
+        $postTypes =  get_post_types([
             'public'   => true,
             '_builtin' => false
         ], 'object');
+
+        $postTypesExceptRaspi = [];
+        foreach ($postTypes as $postType) {
+            if ($postType->capability_type !== 'post' || $postType->name === 'recipe') {
+                continue;
+            }
+
+            array_push($postTypesExceptRaspi, $postType->name);
+        }
+
+        return $postTypesExceptRaspi;
     }
 }

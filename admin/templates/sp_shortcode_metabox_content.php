@@ -1,6 +1,5 @@
 <?php defined('ABSPATH') or die('No script kiddies please!');
 
-// $postTypes = getPostTypesList();
 $posts = getAllPosts('recipe');
 ?>
 
