@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Custom Post-Type Shortcode\n"
-"POT-Creation-Date: 2023-02-25 22:40+0330\n"
-"PO-Revision-Date: 2023-02-25 22:41+0330\n"
+"POT-Creation-Date: 2023-02-26 21:49+0330\n"
+"PO-Revision-Date: 2023-02-26 21:49+0330\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -27,35 +27,31 @@ msgstr "تولیدکننده کد کوتاه پست تایپ"
 
 #: admin/sp_shortcode_metabox.php:6
 msgid "shortcode"
-msgstr "کد کوتاه پست تایپ"
+msgstr "کد کوتاه رسپی"
 
 #: admin/templates/settings.php:16
 msgid "Settings Saved."
 msgstr "تنظیمات ذخیره شد"
 
-#: admin/templates/settings.php:26
+#: admin/templates/settings.php:25
 msgid "Settings"
 msgstr "تنظیمات"
 
-#: admin/templates/settings.php:28
+#: admin/templates/settings.php:27
 msgid "Main Settings"
 msgstr "تنظیمات اصلی"
 
-#: admin/templates/settings.php:35
+#: admin/templates/settings.php:34
 msgid "Selected Post Types"
 msgstr "پست تایپ های انتخاب  شده"
 
-#: admin/templates/settings.php:52
+#: admin/templates/settings.php:51
 msgid "Save Settings"
 msgstr "ذخیره"
 
-#: admin/templates/sp_shortcode_metabox_content.php:9
-msgid "Select Post Type..."
-msgstr "انتخاب  پست تایپ..."
-
-#: admin/templates/sp_shortcode_metabox_content.php:17 main.php:36
+#: admin/templates/sp_shortcode_metabox_content.php:10 main.php:36
 msgid "Select Post..."
-msgstr "انتخاب پست..."
+msgstr "انتخاب رسپی..."
 
 #: main.php:37
 msgid "The text copied to clipboard successfully :D"
@@ -65,13 +61,15 @@ msgstr "کد کوتاه در حافظه کلیپ بورد ذخیره شد D:"
 msgid "Select Your Post Types"
 msgstr "پست تایپ موردنظر خود را انتخاب کنید..."
 
-#: site/templates/customPostType_widget.php:29
+#: site/templates/customPostType_widget.php:28
 msgid "Read More..."
-msgstr "ادامه مطلب..."
+msgstr "مشاهده رسپی"
 
 #. Plugin Name of the plugin/theme
-msgid "Custom Post-Type Shortcode"
-msgstr "کد کوتاه پست تایپ"
+#, fuzzy
+#| msgid "shortcode"
+msgid "Raspi Shortcode"
+msgstr "کد کوتاه رسپی"
 
 #. Plugin URI of the plugin/theme
 msgid "http://localhost"
@@ -84,3 +82,9 @@ msgstr ""
 #. Author URI of the plugin/theme
 msgid "https://github.com/tuderiewsc"
 msgstr ""
+
+#~ msgid "Select Post Type..."
+#~ msgstr "انتخاب  پست تایپ..."
+
+#~ msgid "Custom Post-Type Shortcode"
+#~ msgstr "کد کوتاه پست تایپ"
