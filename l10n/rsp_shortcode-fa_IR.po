@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Custom Post-Type Shortcode\n"
-"POT-Creation-Date: 2023-02-26 21:49+0330\n"
-"PO-Revision-Date: 2023-02-26 21:49+0330\n"
+"POT-Creation-Date: 2023-02-27 22:40+0330\n"
+"PO-Revision-Date: 2023-02-27 22:41+0330\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -21,55 +21,26 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: admin/admin_process.php:8 admin/admin_process.php:9
-msgid "Custom Post Type Shortcode"
-msgstr "تولیدکننده کد کوتاه پست تایپ"
-
-#: admin/sp_shortcode_metabox.php:6
-msgid "shortcode"
+#. Plugin Name of the plugin/theme
+#: admin/sp_shortcode_metabox.php:10
+msgid "Raspi Shortcode"
 msgstr "کد کوتاه رسپی"
 
-#: admin/templates/settings.php:16
-msgid "Settings Saved."
-msgstr "تنظیمات ذخیره شد"
+#: admin/templates/sp_shortcode_metabox_content.php:9
+msgid "Select Category..."
+msgstr "انتخاب دسته رسپی..."
 
-#: admin/templates/settings.php:25
-msgid "Settings"
-msgstr "تنظیمات"
-
-#: admin/templates/settings.php:27
-msgid "Main Settings"
-msgstr "تنظیمات اصلی"
-
-#: admin/templates/settings.php:34
-msgid "Selected Post Types"
-msgstr "پست تایپ های انتخاب  شده"
-
-#: admin/templates/settings.php:51
-msgid "Save Settings"
-msgstr "ذخیره"
-
-#: admin/templates/sp_shortcode_metabox_content.php:10 main.php:36
+#: admin/templates/sp_shortcode_metabox_content.php:15 main.php:39
 msgid "Select Post..."
 msgstr "انتخاب رسپی..."
 
-#: main.php:37
+#: main.php:40
 msgid "The text copied to clipboard successfully :D"
 msgstr "کد کوتاه در حافظه کلیپ بورد ذخیره شد D:"
 
-#: main.php:38
-msgid "Select Your Post Types"
-msgstr "پست تایپ موردنظر خود را انتخاب کنید..."
-
-#: site/templates/customPostType_widget.php:28
+#: site/templates/customPostType_widget.php:33
 msgid "Read More..."
 msgstr "مشاهده رسپی"
-
-#. Plugin Name of the plugin/theme
-#, fuzzy
-#| msgid "shortcode"
-msgid "Raspi Shortcode"
-msgstr "کد کوتاه رسپی"
 
 #. Plugin URI of the plugin/theme
 msgid "http://localhost"
@@ -83,8 +54,8 @@ msgstr ""
 msgid "https://github.com/tuderiewsc"
 msgstr ""
 
-#~ msgid "Select Post Type..."
-#~ msgstr "انتخاب  پست تایپ..."
+#~ msgid "shortcode"
+#~ msgstr "کد کوتاه رسپی"
 
 #~ msgid "Custom Post-Type Shortcode"
 #~ msgstr "کد کوتاه پست تایپ"

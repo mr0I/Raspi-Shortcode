@@ -2,5 +2,5 @@
 
 return array(
     'RASPI_POST_TYPE_NAME' => 'recipe',
-    'RASPI_TAXONOMY_NAME' => 'food-category'
+    'RASPI_TAXONOMY_NAME' => 'food-category',
 );
