@@ -10,7 +10,12 @@ $posts = getAllPosts('recipe');
             <?php foreach ($posts as $post) : ?>
                 <option value="<?= $post->ID ?>"><?= $post->post_title; ?></option>
             <?php endforeach; ?>
-
+        </select>
+        <select id="sp_posts_list" onchange="changePostId(event)" style="width: 100%;margin-bottom: 16px;">
+            <option value="0" disabled selected><?= __('Select Post...', 'rsp_shortcode') ?></option>
+            <?php foreach ($posts as $post) : ?>
+                <option value="<?= $post->ID ?>"><?= $post->post_title; ?></option>
+            <?php endforeach; ?>
         </select>
         <input type="hidden" id="sp_shortcode_nonce" value="<?= wp_create_nonce('sp-shortcode-nonce') ?>">
 

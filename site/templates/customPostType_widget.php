@@ -24,11 +24,14 @@ $isRtl = !!str_starts_with(get_locale(), 'fa_');
         <div class="customTypeWidget__container">
             <div class="customTypeWidget__content <?= $isRtl ? 'rtl' : 'ltr' ?>">
                 <h3><?= $post[0]->post_title; ?></h3>
+                <figure id="raspi_thumbnail_mobile" style="display: none;text-align: center;">
+                    <img src="<?= $postThumbnailSrc ?>" alt="<?= $post[0]->post_title; ?>" />
+                </figure>
                 <p><?= mb_strimwidth($post[0]->post_content, 0, 650, '...'); ?></p>
                 <a class="customTypeWidget__content__link" href="<?= get_permalink($post[0]->ID) ?>"><?= __('Read More...', 'rsp_shortcode') ?></a>
             </div>
             <div class="customTypeWidget__image">
-                <figure>
+                <figure id="raspi_thumbnail_desktop">
                     <img src="<?= $postThumbnailSrc ?>" alt="<?= $post[0]->post_title; ?>" />
                 </figure>
             </div>

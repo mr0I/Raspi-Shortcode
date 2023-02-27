@@ -19,6 +19,7 @@ define('RSP_ADMIN_JS', plugin_dir_url(__FILE__) . 'admin/assets/js/');
 define('RSP_ADMIN_CSS', plugin_dir_url(__FILE__) . 'admin/assets/css/');
 define('RSP_STATIC', plugin_dir_url(__FILE__) . 'site/static/');
 define('RSP_CSS', plugin_dir_url(__FILE__) . 'site/static/css/');
+define('RSP_JS', plugin_dir_url(__FILE__) . 'site/static/js/');
 
 add_action('plugins_loaded', function () {
     load_plugin_textdomain('rsp_shortcode', false, basename(RSP_ROOTDIR) . '/l10n/');
@@ -40,6 +41,7 @@ add_action('admin_enqueue_scripts', function () {
     wp_enqueue_style('rsc-admin-styles', RSP_ADMIN_CSS . 'admin_styles.css', '1.0.0');
 });
 add_action('wp_enqueue_scripts', function () {
+    wp_enqueue_script('rsc-script', RSP_JS . 'scripts.js', '1.0.0');
     wp_enqueue_style('rsc-styles', RSP_CSS . 'main.css', '1.0.0');
 });
 /** Init & Includes */

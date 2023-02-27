@@ -48,3 +48,16 @@ if (!function_exists('getPostTypesList')) {
         return $postTypesExceptRaspi;
     }
 }
+
+if (!function_exists('getRaspiCategories')) {
+    function getRaspiCategories()
+    {
+        $args = array(
+            'taxonomy' => 'dining-category',
+            'orderby' => 'name',
+            'order'   => 'ASC'
+        );
+
+        $cats = get_categories($args);
+    }
+}
