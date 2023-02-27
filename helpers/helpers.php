@@ -1,5 +1,6 @@
 <?php
 
+
 if (!function_exists('getAllPosts')) {
     function getAllPosts($post_type)
     {
@@ -8,6 +9,28 @@ if (!function_exists('getAllPosts')) {
             'offset' => 0,
             'post_status' => 'publish'
         ];
+        $results = new WP_Query($args);
+        return $results->posts;
+    }
+}
+
+if (!function_exists('getAllPostsByCategory')) {
+    function getAllPostsByCategory($post_type, $category_id)
+    {
+
+        $appConfig = include(RSP_ROOTDIR . 'config.php');
+
+        $args = array(
+            'post_type' => $post_type,
+            'tax_query' => array(
+                array(
+                    'taxonomy' => $appConfig['RASPI_TAXONOMY_NAME'],
+                    'field' => 'term_id',
+                    'terms' => $category_id
+                )
+            )
+        );
+
         $results = new WP_Query($args);
         return $results->posts;
     }
@@ -31,6 +54,8 @@ if (!function_exists('getSinglePost')) {
 if (!function_exists('getPostTypesList')) {
     function getPostTypesList()
     {
+        $appConfig = include(RSP_ROOTDIR . 'config.php');
+
         $postTypes =  get_post_types([
             'public'   => true,
             '_builtin' => false
@@ -38,7 +63,7 @@ if (!function_exists('getPostTypesList')) {
 
         $postTypesExceptRaspi = [];
         foreach ($postTypes as $postType) {
-            if ($postType->capability_type !== 'post' || $postType->name === 'recipe') {
+            if ($postType->capability_type !== 'post' || $postType->name === $appConfig['RASPI_POST_TYPE_NAME']) {
                 continue;
             }
 
@@ -52,12 +77,14 @@ if (!function_exists('getPostTypesList')) {
 if (!function_exists('getRaspiCategories')) {
     function getRaspiCategories()
     {
+        $appConfig = include(RSP_ROOTDIR . 'config.php');
+
         $args = array(
-            'taxonomy' => 'dining-category',
+            'taxonomy' => $appConfig['RASPI_TAXONOMY_NAME'],
             'orderby' => 'name',
             'order'   => 'ASC'
         );
 
-        $cats = get_categories($args);
+        return get_categories($args);
     }
 }

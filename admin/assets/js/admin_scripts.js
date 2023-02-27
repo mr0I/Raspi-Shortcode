@@ -3,6 +3,7 @@ jQuery(document).ready(function ($) {
     /** Inits */
     window.jq = $;
     initSelect2('#contained_RSP_select', RSP_ADMIN_Ajax.Selected_Post_Types_TEXT);
+    initSelect2('#cats_list');
     initSelect2('#sp_posts_list');
 
     /** Copy Shortcode To Clipboard */
@@ -14,48 +15,50 @@ jQuery(document).ready(function ($) {
 });
 
 
-// function changePostType(event) {
-//     jq('.shortcode-value').css('display', 'none');
-//     const postType = event.target.value || event.currentTarget.value;
-//     const nonce = document.getElementById('sp_shortcode_nonce').value;
 
-//     jq.ajax({
-//         url: RSP_ADMIN_Ajax.AJAXURL,
-//         type: 'POST',
-//         data: {
-//             SECURITY: RSP_ADMIN_Ajax.SECURITY,
-//             action: 'fetchPosts',
-//             nonce: nonce,
-//             post_type: postType
-//         },
-//         beforeSend: () => {
-//             jq('.loader-spinner').css('display', 'block');
-//         },
-//         success: (res, xhr) => {
-//             const selectedPosts = res.data;
-//             if (xhr) {
-//                 const selectBoxList = document.getElementById('sp_posts_list');
-//                 jq(selectBoxList).html(`<option value="0" disabled selected>${RSP_ADMIN_Ajax.SELECT_POST_LIST_TEXT}</option>`);
-//                 selectedPosts.forEach(post => {
-//                     jq(selectBoxList).append(`
-//                          <option value="${post.ID}">${post.post_title}</option>
-//                     `);
-//                 });
-//             }
-//         },
-//         error: (jqXHR, textStatus, errorThrown) => {
-//             console.log(errorThrown);
-//         },
-//         complete: () => {
-//             jq('.loader-spinner').css('display', 'none');
-//         },
-//         timeout: RSP_ADMIN_Ajax.REQUEST_TIMEOUT
-//     });
-// }
+function changeCatId(event) {
+    jq('.shortcode-value').css('display', 'none');
+    const catId = event.target.value || event.currentTarget.value;
+    const nonce = document.getElementById('sp_shortcode_nonce').value;
+
+    jq.ajax({
+        url: RSP_ADMIN_Ajax.AJAXURL,
+        type: 'POST',
+        data: {
+            SECURITY: RSP_ADMIN_Ajax.SECURITY,
+            action: 'fetchPostsByCategory',
+            nonce: nonce,
+            category_id: catId
+        },
+        beforeSend: () => {
+            jq('.loader-spinner').css('display', 'block');
+        },
+        success: (res, xhr) => {
+            const selectedPosts = res.data;
+            if (xhr) {
+                const selectBoxList = document.getElementById('sp_posts_list');
+                jq(selectBoxList).html(`<option value="0" disabled selected>${RSP_ADMIN_Ajax.SELECT_POST_LIST_TEXT}</option>`);
+                selectedPosts.forEach(post => {
+                    jq(selectBoxList).append(`
+                         <option value="${post.ID}">${post.post_title}</option>
+                    `);
+                });
+            }
+        },
+        error: (jqXHR, textStatus, errorThrown) => {
+            console.log(errorThrown);
+        },
+        complete: () => {
+            jq('.loader-spinner').css('display', 'none');
+        },
+        timeout: RSP_ADMIN_Ajax.REQUEST_TIMEOUT
+    });
+
+
+}
 
 function changePostId(event) {
     const postId = event.target.value || event.currentTarget.value;
-    // const postType = document.getElementById('sp_post_types').value;
     const nonce = document.getElementById('sp_shortcode_nonce').value;
 
     jq.ajax({
@@ -66,7 +69,7 @@ function changePostId(event) {
             action: 'fetchSinglePost',
             nonce: nonce,
             post_id: postId,
-            post_type: 'recipe'
+            post_type: RSP_ADMIN_Ajax.RASPI_POST_TYPE_NAME
         },
         beforeSend: () => {
             jq('.loader-spinner').css('display', 'block');

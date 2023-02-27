@@ -1,21 +1,18 @@
 <?php defined('ABSPATH') or die('No script kiddies please!');
 
-$posts = getAllPosts('recipe');
+$cats = getRaspiCategories();
 ?>
 
 <div style="padding: 10px 0;">
     <form action="" name="sp_shortcode">
-        <select id="sp_posts_list" onchange="changePostId(event)" style="width: 100%;margin-bottom: 16px;">
-            <option value="0" disabled selected><?= __('Select Post...', 'rsp_shortcode') ?></option>
-            <?php foreach ($posts as $post) : ?>
-                <option value="<?= $post->ID ?>"><?= $post->post_title; ?></option>
+        <select id="cats_list" onchange="changeCatId(event)" style="width: 100%;margin-bottom: 16px;">
+            <option value="0" disabled selected><?= __('Select Category...', 'rsp_shortcode') ?></option>
+            <?php foreach ($cats as $cat) : ?>
+                <option value="<?= $cat->cat_ID ?>"><?= $cat->name; ?></option>
             <?php endforeach; ?>
         </select>
         <select id="sp_posts_list" onchange="changePostId(event)" style="width: 100%;margin-bottom: 16px;">
             <option value="0" disabled selected><?= __('Select Post...', 'rsp_shortcode') ?></option>
-            <?php foreach ($posts as $post) : ?>
-                <option value="<?= $post->ID ?>"><?= $post->post_title; ?></option>
-            <?php endforeach; ?>
         </select>
         <input type="hidden" id="sp_shortcode_nonce" value="<?= wp_create_nonce('sp-shortcode-nonce') ?>">
 

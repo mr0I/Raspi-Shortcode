@@ -2,6 +2,8 @@
 
 <?php
 require_once(RSP_ROOTDIR . 'helpers/helpers.php');
+$appConfig = include(RSP_ROOTDIR . 'config.php');
+
 $post_id = '';
 extract(shortcode_atts(array(
     'post_id' => ''
@@ -9,7 +11,7 @@ extract(shortcode_atts(array(
 
 $post = [];
 if ($post_id !== '') {
-    $post = getSinglePost($post_id, 'recipe');
+    $post = getSinglePost($post_id, $appConfig['RASPI_POST_TYPE_NAME']);
 }
 
 $isRtl = !!str_starts_with(get_locale(), 'fa_');

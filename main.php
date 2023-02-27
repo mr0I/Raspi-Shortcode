@@ -27,12 +27,15 @@ add_action('plugins_loaded', function () {
 
 
 add_action('admin_enqueue_scripts', function () {
+    $appConfig = include(RSP_ROOTDIR . 'config.php');
+
     wp_enqueue_script('select2-script', RSP_ADMIN_JS . 'select2.min.js', array(), '4.1.0');
     wp_enqueue_script('rsc-admin-script', RSP_ADMIN_JS . 'admin_scripts.js', array('jquery'), '1.0.0');
     wp_localize_script('rsc-admin-script', 'RSP_ADMIN_Ajax', array(
         'AJAXURL' => admin_url('admin-ajax.php'),
         'SECURITY' => wp_create_nonce('OwpCojMcdGJ-k-o'),
         'REQUEST_TIMEOUT' => 30000,
+        'RASPI_POST_TYPE_NAME' => $appConfig['RASPI_POST_TYPE_NAME'],
         'SELECT_POST_LIST_TEXT' => __('Select Post...', 'rsp_shortcode'),
         'SUCCESS_COPY_TO_CLIP' => __('The text copied to clipboard successfully :D', 'rsp_shortcode')
     ));
