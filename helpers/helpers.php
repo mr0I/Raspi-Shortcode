@@ -22,6 +22,7 @@ if (!function_exists('getAllPostsByCategory')) {
 
         $args = array(
             'post_type' => $post_type,
+            'post_status' => 'publish',
             'tax_query' => array(
                 array(
                     'taxonomy' => $appConfig['RASPI_TAXONOMY_NAME'],

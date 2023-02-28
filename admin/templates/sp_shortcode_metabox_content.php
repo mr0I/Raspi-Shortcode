@@ -7,6 +7,7 @@ $cats = getRaspiCategories();
     <form action="" name="sp_shortcode">
         <select id="cats_list" onchange="changeCatId(event)" style="width: 100%;margin-bottom: 16px;">
             <option value="0" disabled selected><?= __('Select Category...', 'rsp_shortcode') ?></option>
+            <option value="all"><?= __('All Categories', 'rsp_shortcode') ?></option>
             <?php foreach ($cats as $cat) : ?>
                 <option value="<?= $cat->cat_ID ?>"><?= $cat->name; ?></option>
             <?php endforeach; ?>

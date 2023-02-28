@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Custom Post-Type Shortcode\n"
-"POT-Creation-Date: 2023-02-27 22:40+0330\n"
-"PO-Revision-Date: 2023-02-27 22:41+0330\n"
+"POT-Creation-Date: 2023-02-28 19:13+0330\n"
+"PO-Revision-Date: 2023-02-28 19:13+0330\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -30,7 +30,11 @@ msgstr "کد کوتاه رسپی"
 msgid "Select Category..."
 msgstr "انتخاب دسته رسپی..."
 
-#: admin/templates/sp_shortcode_metabox_content.php:15 main.php:39
+#: admin/templates/sp_shortcode_metabox_content.php:10
+msgid "All Categories"
+msgstr "همه دسته ها"
+
+#: admin/templates/sp_shortcode_metabox_content.php:16 main.php:39
 msgid "Select Post..."
 msgstr "انتخاب رسپی..."
 

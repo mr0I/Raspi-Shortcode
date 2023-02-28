@@ -13,7 +13,9 @@ function fetchPostsByCategory_callback()
     }
 
     $category_id = sanitize_text_field($_POST['category_id']);
-    $posts = getAllPostsByCategory($appConfig['RASPI_POST_TYPE_NAME'], $category_id);
+    $category_id !== 'all'
+        ? $posts = getAllPostsByCategory($appConfig['RASPI_POST_TYPE_NAME'], $category_id)
+        : $posts = getAllPosts($appConfig['RASPI_POST_TYPE_NAME']);
 
     wp_send_json(['data' => $posts], 200);
     exit();
